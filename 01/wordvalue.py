@@ -1,14 +1,9 @@
 from data import DICTIONARY, LETTER_SCORES
 
-def only_letters(word):
-    if word.isalpha():
-        return word
-    return ''.join([char for char in word if char.isalpha()])
-
 def load_words():
     """Load dictionary into a list and return list"""
     with open(DICTIONARY, 'r') as f:
-        all_words = [only_letters(row) for row in f]
+        all_words = [row.strip().replace('-', '') for row in f]
     return all_words
 
 def calc_word_value(word):
